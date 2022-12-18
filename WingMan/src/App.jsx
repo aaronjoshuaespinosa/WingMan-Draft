@@ -1,33 +1,34 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import './App.css'
+import './index.css'
+import { Route, Routes, useNavigate } from 'react-router-dom'
+
+// import { Test } from './test.jsx' // kANINA
+
+//
+import TestingLang from './test.jsx'
+
 
 function App() {
   const [count, setCount] = useState(0)
+  const navigate = useNavigate()
+
+  const handleAJ = () => {
+    navigate("/aj", { replace: true })
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+
+    <>
+      <h1 className="text-red-800 text-xs mt-10" onClick={handleAJ}>Navigate to AJ</h1>
+
+      <Routes>
+        <Route path="/aj" element={<TestingLang/>}></Route>
+      </Routes>
+    </>
+
+
+
   )
 }
 
